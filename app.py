@@ -133,7 +133,22 @@ elif menu == "영화별 키워드 상세":
     
     with col_r:
         st.write("### 📝 단어별 점수표")
-        st.dataframe(df_kw[['word', 'score']].style.background_gradient(subset=['score'], cmap='Greens'), height=450)
+        st.dataframe(
+            df_kw[['word', 'score']],
+            column_config={
+                "word": "단어",
+                "score": st.column_config.ProgressColumn(
+                    "중요도 점수",
+                    help="TF-IDF 기반 핵심 단어 점수",
+                    format="%.4f",
+                    min_value=0,
+                    max_value=float(df_kw['score'].max() if not df_kw.empty else 1.0),
+                )
+            },
+            hide_index=True,
+            use_container_width=True,
+            height=450
+        )
 
 elif menu == "토픽 모델링 분석":
     st.title("💎 리뷰 토픽 모델링 (LDA)")
