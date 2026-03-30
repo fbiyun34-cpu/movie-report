@@ -92,7 +92,7 @@ with tab1:
         v_idx = movies.index(selected_movie)
         pts = [0.85-(v_idx*0.02), 0.75+(v_idx*0.03), 0.95-(v_idx*0.01), 0.88-(v_idx*0.02), 0.82+(v_idx*0.01)]
         fig_radar = go.Figure(go.Scatterpolar(r=pts+[pts[0]], theta=cats+[cats[0]], fill='toself', fillcolor='rgba(0, 242, 255, 0.2)', line=dict(color='#00f2ff', width=6)))
-        fig_radar.update_layout(polar=dict(bgcolor='rgba(0,0,0,0)', radialaxis=dict(visible=False), angularaxis=dict(tickfont=dict(size=18, color='#ffffff', weight='black'))), paper_bgcolor='rgba(0,0,0,0)', margin=dict(l=60,r=60,t=20,b=20), height=550)
+        fig_radar.update_layout(polar=dict(bgcolor='rgba(0,0,0,0)', radialaxis=dict(visible=False), angularaxis=dict(tickfont=dict(size=18, color='#ffffff'))), paper_bgcolor='rgba(0,0,0,0)', margin=dict(l=60,r=60,t=20,b=20), height=550)
         st.plotly_chart(fig_radar, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
     
@@ -127,7 +127,7 @@ with tab2:
         # 차트 텍스트 초대형화
         fig_kw.update_layout(height=600, showlegend=False, paper_bgcolor='rgba(0,0,0,0)', margin=dict(l=0,r=20,t=10,b=10), font=dict(size=18, color='#ffffff'))
         fig_kw.update_xaxes(showgrid=False, zeroline=False, visible=False)
-        fig_kw.update_yaxes(showgrid=False, zeroline=False, tickfont=dict(size=22, color='#ffffff', weight='black'))
+        fig_kw.update_yaxes(showgrid=False, zeroline=False, tickfont=dict(size=22, color='#ffffff'))
         fig_kw.update_traces(textfont_size=20, textposition='outside')
         st.plotly_chart(fig_kw, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -136,7 +136,7 @@ with tab2:
         st.markdown("<div style='font-size: 1.8rem; font-weight: 900; margin-bottom: 20px;'>시장 점유율 리포트</div>", unsafe_allow_html=True)
         df_tree = pd.DataFrame(list(data['movie_stats'].items()), columns=['Movie', 'Value'])
         fig_tree = px.treemap(df_tree, path=['Movie'], values='Value', color='Value', color_continuous_scale='Blues', template='plotly_dark')
-        fig_tree.update_layout(margin=dict(l=0,r=0,t=0,b=0), paper_bgcolor='rgba(0,0,0,0)', font=dict(size=24, color='#ffffff', weight='black'))
+        fig_tree.update_layout(margin=dict(l=0,r=0,t=0,b=0), paper_bgcolor='rgba(0,0,0,0)', font=dict(size=24, color='#ffffff'))
         fig_tree.data[0].textinfo = "label+value"
         st.plotly_chart(fig_tree, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
