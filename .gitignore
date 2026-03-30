@@ -1,0 +1,26 @@
+# Data
+data/*.csv
+data/naver_review_data.csv
+data/watcha_reviews_popular_integrated.csv
+
+# Dependencies
+node_modules/
+.venv/
+.npm-cache/
+package-lock.json
+
+# Builds
+dist/
+build/
+*.pyc
+__pycache__/
+
+# IDE / OS
+.vscode/
+.DS_Store
+.npm/
+.gemini/
+.agents/
+.cursor/
+.git/
+# We are currently IN a git init, but we should ignore parent .git if any
