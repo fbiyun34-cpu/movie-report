@@ -92,7 +92,7 @@ with tab1:
         cats = ['Persona', 'Visual', 'Emotion', 'Viral', 'Authority']
         pts = [0.90, 0.75, 0.98, 0.92, 0.85]
         fig_radar = go.Figure(go.Scatterpolar(r=pts+[pts[0]], theta=cats+[cats[0]], fill='toself', fillcolor='rgba(34, 211, 238, 0.15)', line=dict(color='#22d3ee', width=6)))
-        fig_radar.update_layout(polar=dict(bgcolor='rgba(0,0,0,0)', radialaxis=dict(visible=False), angularaxis=dict(tickfont=dict(size=18, color='#f8fafc', weight='black'))), paper_bgcolor='rgba(0,0,0,0)', margin=dict(l=60,r=60,t=20,b=20), height=550)
+        fig_radar.update_layout(polar=dict(bgcolor='rgba(0,0,0,0)', radialaxis=dict(visible=False), angularaxis=dict(tickfont=dict(size=18, color='#f8fafc'))), paper_bgcolor='rgba(0,0,0,0)', margin=dict(l=60,r=60,t=20,b=20), height=550)
         st.plotly_chart(fig_radar, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
     
@@ -123,7 +123,7 @@ with tab2:
         fig_kw = px.bar(kw_df, x='score', y='word', orientation='h', color='score', text_auto='.3f', color_continuous_scale='GnBu', template='plotly_dark')
         fig_kw.update_layout(height=650, showlegend=False, paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', margin=dict(l=0,r=30,t=10,b=10), font=dict(size=18, color='#f8fafc'))
         fig_kw.update_xaxes(showgrid=False, zeroline=False, visible=False)
-        fig_kw.update_yaxes(showgrid=False, zeroline=False, tickfont=dict(size=24, color='#ffffff', weight='black'))
+        fig_kw.update_yaxes(showgrid=False, zeroline=False, tickfont=dict(size=24, color='#ffffff'))
         fig_kw.update_traces(textfont_size=22, textposition='outside')
         st.plotly_chart(fig_kw, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -132,7 +132,7 @@ with tab2:
         st.markdown("<div style='font-size: 2rem; font-weight: 900; margin-bottom: 25px;'>Market Share Analysis</div>", unsafe_allow_html=True)
         df_tree = pd.DataFrame(list(data['movie_stats'].items()), columns=['Movie', 'Value'])
         fig_tree = px.treemap(df_tree, path=['Movie'], values='Value', color='Value', color_continuous_scale='Blues', template='plotly_dark')
-        fig_tree.update_layout(margin=dict(l=0,r=0,t=0,b=0), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(size=26, color='#ffffff', weight='black'))
+        fig_tree.update_layout(margin=dict(l=0,r=0,t=0,b=0), paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(size=26, color='#ffffff'))
         fig_tree.data[0].textinfo = "label+value"
         st.plotly_chart(fig_tree, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
